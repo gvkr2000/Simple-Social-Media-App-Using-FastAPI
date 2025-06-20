@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Uvicorn",
+      "type": "shell",
+      "command": "uvicorn app.main:app --reload",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    }
+  ]
+}
