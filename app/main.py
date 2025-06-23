@@ -10,8 +10,6 @@ print(settings.database_username)
 
 app = FastAPI()
 
-app = FastAPI()
-
 origins = ["*"]
 
 app.add_middleware(
@@ -40,35 +38,6 @@ def root():
 
 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
