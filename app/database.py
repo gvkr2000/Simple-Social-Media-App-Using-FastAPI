@@ -3,17 +3,21 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 from .config import settings
 from urllib.parse import quote_plus
+import os
 
 
 username = quote_plus(settings.database_username)
 password = quote_plus(settings.database_password)
 
-SQLALCHEMY_DATABASE_URL = (
-    f"postgresql+psycopg2://{username}:{password}@{settings.database_hostname}:{str(settings.database_port)}/{settings.database_name}"
-)
+# SQLALCHEMY_DATABASE_URL = (
+#     f"postgresql+psycopg2://{username}:{password}@{settings.database_hostname}:{str(settings.database_port)}/{settings.database_name}"
+# )
+
+DATABASE_URL = f"postgresql://{os.getenv('DATABASE_USERNAME')}:{os.getenv('DATABASE_PASSWORD')}@{os.getenv('DATABASE_HOSTNAME')}:{os.getenv('DATABASE_PORT')}/{os.getenv('DATABASE_NAME')}"
 
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()

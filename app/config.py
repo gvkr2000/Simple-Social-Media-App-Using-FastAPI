@@ -13,5 +13,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"  
 
-        
+from dotenv import load_dotenv
+load_dotenv()  # This loads the .env file into os.environ
+
 settings = Settings() 
